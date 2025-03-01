@@ -1,0 +1,7 @@
+# AUTO GENERATED FILE - DO NOT EDIT
+
+export(DashDock)
+export(Tab)
+export(panelWrapper)
+export(dashDock)
+export(tab)

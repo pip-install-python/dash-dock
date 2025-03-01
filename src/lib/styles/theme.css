@@ -1,0 +1,206 @@
+/* DashDock Mantine Theme CSS */
+
+/* Define light theme values */
+:root[data-mantine-color-scheme="light"] {
+  --dashdock-bg-color: var(--mantine-color-gray-0, #f8f9fa);
+  --dashdock-border-color: var(--mantine-color-gray-3, #dee2e6);
+  --dashdock-tab-bg-color: var(--mantine-color-white, #ffffff);
+  --dashdock-tab-active-bg-color: var(--mantine-color-blue-0, #e7f5ff);
+  --dashdock-tab-hover-bg-color: var(--mantine-color-gray-1, #f1f3f5);
+  --dashdock-text-color: var(--mantine-color-dark-9, #212529);
+  --dashdock-tab-text-color: var(--mantine-color-dark-7, #495057);
+  --dashdock-tab-active-text-color: var(--mantine-color-blue-7, #1c7ed6);
+  --dashdock-splitter-color: var(--mantine-color-gray-3, #dee2e6);
+  --dashdock-splitter-hover-color: var(--mantine-color-blue-5, #339af0);
+  --dashdock-premium-indicator: var(--mantine-color-blue-7, #1c7ed6);
+  --dashdock-free-indicator: var(--mantine-color-gray-6, #868e96);
+  --dashdock-shadow: var(--mantine-shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.1));
+  --dashdock-loading-bg: var(--mantine-color-gray-1, #f1f3f5);
+}
+
+/* Define dark theme values */
+:root[data-mantine-color-scheme="dark"] {
+  --dashdock-bg-color: var(--mantine-color-dark-7, #2e2e2e);
+  --dashdock-border-color: var(--mantine-color-dark-4, #424242);
+  --dashdock-tab-bg-color: var(--mantine-color-dark-6, #2e2e2e);
+  --dashdock-tab-active-bg-color: var(--mantine-color-dark-5, #3b3b3b);
+  --dashdock-tab-hover-bg-color: var(--mantine-color-dark-5, #3b3b3b);
+  --dashdock-text-color: var(--mantine-color-gray-2, #e9ecef);
+  --dashdock-tab-text-color: var(--mantine-color-gray-4, #ced4da);
+  --dashdock-tab-active-text-color: var(--mantine-color-blue-3, #74c0fc);
+  --dashdock-splitter-color: var(--mantine-color-dark-4, #424242);
+  --dashdock-splitter-hover-color: var(--mantine-color-blue-8, #1971c2);
+  --dashdock-premium-indicator: var(--mantine-color-blue-5, #339af0);
+  --dashdock-free-indicator: var(--mantine-color-gray-5, #adb5bd);
+  --dashdock-shadow: var(--mantine-shadow-md, 0 4px 6px rgba(0, 0, 0, 0.2));
+  --dashdock-loading-bg: var(--mantine-color-dark-5, #3b3b3b);
+}
+
+/* Default fallback theme (if no Mantine theme is detected) */
+:root:not([data-mantine-color-scheme]) {
+  --dashdock-bg-color: #f8f9fa;
+  --dashdock-border-color: #dee2e6;
+  --dashdock-tab-bg-color: #ffffff;
+  --dashdock-tab-active-bg-color: #e7f5ff;
+  --dashdock-tab-hover-bg-color: #f1f3f5;
+  --dashdock-text-color: #212529;
+  --dashdock-tab-text-color: #495057;
+  --dashdock-tab-active-text-color: #1c7ed6;
+  --dashdock-splitter-color: #dee2e6;
+  --dashdock-splitter-hover-color: #339af0;
+  --dashdock-premium-indicator: #1c7ed6;
+  --dashdock-free-indicator: #868e96;
+  --dashdock-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --dashdock-loading-bg: #f1f3f5;
+}
+
+/* DashDock container styles */
+.dash-dock-container {
+  font-family: var(--mantine-font-family, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif);
+  background-color: var(--dashdock-bg-color);
+  color: var(--dashdock-text-color);
+  border-radius: var(--mantine-radius-md, 0.5rem);
+  overflow: hidden;
+  transition: all 0.2s ease;
+  box-shadow: var(--dashdock-shadow);
+}
+
+/* DashDock loading indicator */
+.dash-dock-loading {
+  font-family: var(--mantine-font-family, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif);
+  background-color: var(--dashdock-loading-bg);
+  color: var(--dashdock-text-color);
+  padding: 1rem;
+  border-radius: var(--mantine-radius-md, 0.5rem);
+  text-align: center;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--dashdock-shadow);
+}
+
+/* Premium/Free indicators */
+.dash-dock-container .dashdock-premium-indicator,
+.dash-dock-container .dashdock-free-indicator {
+  font-size: 10px;
+  padding: 2px 0;
+  text-align: right;
+}
+
+.dash-dock-container .dashdock-premium-indicator {
+  color: var(--dashdock-premium-indicator);
+}
+
+.dash-dock-container .dashdock-free-indicator {
+  color: var(--dashdock-free-indicator);
+}
+
+/* FlexLayout overrides for Mantine compatibility */
+.dash-dock-container .flexlayout__layout {
+  --color-text: var(--dashdock-text-color);
+  --color-background: var(--dashdock-bg-color);
+  --color-base: var(--dashdock-bg-color);
+  --color-1: var(--dashdock-border-color);
+  --color-2: var(--dashdock-tab-bg-color);
+  --color-3: var(--dashdock-tab-active-bg-color);
+  --color-4: var(--dashdock-tab-hover-bg-color);
+  --color-5: var(--dashdock-tab-text-color);
+  --color-6: var(--dashdock-tab-active-text-color);
+  --color-drag1: var(--mantine-color-blue-6, #228be6);
+  --color-drag2: var(--mantine-color-blue-3, #74c0fc);
+  --color-overflow: var(--mantine-color-gray-6, #868e96);
+  --color-splitter: var(--dashdock-splitter-color);
+  --color-splitter-hover: var(--dashdock-splitter-hover-color);
+  --font-family: var(--mantine-font-family, inherit);
+  --color-icon: var(--dashdock-tab-text-color);
+  --color-tabset-background: var(--dashdock-bg-color);
+  --color-tabset-background-selected: var(--dashdock-tab-active-bg-color);
+  --color-tabset-foreground: var(--dashdock-tab-text-color);
+  --color-tabset-foreground-selected: var(--dashdock-tab-active-text-color);
+  --border-radius-tabset-tab: var(--mantine-radius-sm, 0.25rem);
+  --border-radius-tabset: var(--mantine-radius-md, 0.5rem);
+  --border-radius-tab-contents: var(--mantine-radius-sm, 0.25rem);
+}
+
+/* Tab styling */
+.dash-dock-container .flexlayout__tab {
+  background-color: var(--dashdock-tab-bg-color);
+  color: var(--dashdock-tab-text-color);
+  border-radius: var(--mantine-radius-sm, 0.25rem);
+  overflow: hidden;
+}
+
+.dash-dock-container .flexlayout__tab_button {
+  background-color: var(--dashdock-tab-bg-color);
+  color: var(--dashdock-tab-text-color);
+  border-radius: var(--mantine-radius-sm, 0.25rem) var(--mantine-radius-sm, 0.25rem) 0 0;
+  font-family: var(--mantine-font-family, inherit);
+  font-weight: 500;
+}
+
+.dash-dock-container .flexlayout__tab_button--selected {
+  background-color: var(--dashdock-tab-active-bg-color);
+  color: var(--dashdock-tab-active-text-color);
+  font-weight: 600;
+}
+
+.dash-dock-container .flexlayout__tab_button:hover {
+  background-color: var(--dashdock-tab-hover-bg-color);
+}
+
+/* Splitters */
+.dash-dock-container .flexlayout__splitter {
+  background-color: var(--dashdock-splitter-color);
+}
+
+.dash-dock-container .flexlayout__splitter:hover {
+  background-color: var(--dashdock-splitter-hover-color);
+}
+
+/* Borders */
+.dash-dock-container .flexlayout__border {
+  background-color: var(--dashdock-bg-color);
+  border-color: var(--dashdock-border-color);
+}
+
+.dash-dock-container .flexlayout__border_button {
+  background-color: var(--dashdock-tab-bg-color);
+  color: var(--dashdock-tab-text-color);
+}
+
+.dash-dock-container .flexlayout__border_button--selected {
+  background-color: var(--dashdock-tab-active-bg-color);
+  color: var(--dashdock-tab-active-text-color);
+}
+
+.dash-dock-container .flexlayout__border_button:hover {
+  background-color: var(--dashdock-tab-hover-bg-color);
+}
+
+/* Tabset */
+.dash-dock-container .flexlayout__tabset {
+  background-color: var(--dashdock-bg-color);
+  border-color: var(--dashdock-border-color);
+  border-radius: var(--mantine-radius-md, 0.5rem);
+}
+
+.dash-dock-container .flexlayout__tabset_header {
+  background-color: var(--dashdock-bg-color);
+  border-bottom: 1px solid var(--dashdock-border-color);
+  padding: 5px 5px 0 5px;
+}
+
+/* Icons */
+.dash-dock-container .flexlayout__tab_toolbar_button {
+  color: var(--dashdock-tab-text-color);
+}
+
+.dash-dock-container .flexlayout__tab_toolbar_button:hover {
+  color: var(--dashdock-tab-active-text-color);
+}
+
+/* Add transition for smooth theme changes */
+.dash-dock-container * {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}

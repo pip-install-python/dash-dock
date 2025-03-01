@@ -1,0 +1,11 @@
+include dash_dock/dash_dock.min.js
+include dash_dock/dash_dock.min.js.map
+include dash_dock/async-*.js
+include dash_dock/async-*.js.map
+include dash_dock/*-shared.js
+include dash_dock/*-shared.js.map
+include dash_dock/metadata.json
+include dash_dock/package-info.json
+include README.md
+include LICENSE
+include package.json
