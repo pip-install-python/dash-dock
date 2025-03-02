@@ -3,7 +3,7 @@
 A flexible docking window system for Dash applications.
 
 ## Docs
-https://pip-install-python.com/pip/dash-dock
+https://pip-install-python.com/pip/dash_dock
 
 ![Dash Dock Preivew](./assets/preview_dash_dock_light.png)
 
