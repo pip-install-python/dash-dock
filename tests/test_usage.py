@@ -5,10 +5,15 @@ from dash.testing.application_runners import import_app
 # Ensure the current directory is in the Python path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+# Explicitly import the app module
+try:
+    from usage import app
+except ImportError as e:
+    raise ImportError(f"Failed to import 'usage': {e}")
+
 # Basic test for the component rendering.
 def test_render_component(dash_duo):
-    # Start a dash app contained as the variable `app` in `usage.py`
-    app = import_app('usage')  # Ensure 'usage.py' is importable
+    # Start the Dash app
     dash_duo.start_server(app)
 
     # Get the generated component input with selenium
@@ -19,7 +24,7 @@ def test_render_component(dash_duo):
     # Clear the input
     dash_duo.clear_input(my_component)
 
-    # Send keys to the custom input.
+    # Send keys to the custom input
     my_component.send_keys('Hello dash')
 
     # Wait for the text to equal, if after the timeout (default 10 seconds)
