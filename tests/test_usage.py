@@ -3,7 +3,7 @@ import sys
 from dash.testing.application_runners import import_app
 
 # Ensure the current directory is in the Python path
-sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Basic test for the component rendering.
 def test_render_component(dash_duo):
