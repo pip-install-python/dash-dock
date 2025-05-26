@@ -1,15 +1,17 @@
+import os
+import sys
 from dash.testing.application_runners import import_app
 
+# Ensure the current directory is in the Python path
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 # Basic test for the component rendering.
-# The dash_duo pytest fixture is installed with dash (v1.0+)
 def test_render_component(dash_duo):
     # Start a dash app contained as the variable `app` in `usage.py`
-    app = import_app('usage')
+    app = import_app('usage')  # Ensure 'usage.py' is importable
     dash_duo.start_server(app)
 
     # Get the generated component input with selenium
-    # The html input will be a children of the #input dash component
     my_component = dash_duo.find_element('#input > input')
 
     assert 'my-value' == my_component.get_attribute('value')
