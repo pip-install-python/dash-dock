@@ -1,0 +1,61 @@
+name: Dash Dock CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  python-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"] # As per README "Python >= 3.7"
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt # Main project dependencies
+        pip install -r tests/requirements.txt # Test specific dependencies
+
+    - name: Run PyTest
+      run: |
+        pytest tests/ # As specified in pytest.ini and test_usage.py
+
+  javascript-build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x] # Based on ">=12.0.0" from package.json, choose relevant LTS versions
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm install # As per README development setup and package.json
+
+    - name: Build JavaScript and Backend Components
+      run: npm run build # Script from package.json
+      # This typically runs "npm run build:js && npm run build:backends"
+
+    # Optional: Add linting step if you have linters configured (e.g., ESLint)
+    # - name: Run ESLint
+    #   run: npm run lint # Assuming you add a "lint" script to package.json
